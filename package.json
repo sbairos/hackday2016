@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.18.2",
-    "babel-preset-react": "^6.16.0"
+    "babel-loader": "^6.2.8",
+    "babel-preset-react": "^6.16.0",
+    "webpack": "^1.13.3"
   }
 }
