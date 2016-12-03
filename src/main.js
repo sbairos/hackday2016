@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './Counter';
 import ReadQueue from './ReadQueue';
- 
+
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("Hello?");
   ReactDOM.render(
     React.createElement(Counter),
     document.getElementById('mount')
