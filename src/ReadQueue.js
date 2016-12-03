@@ -3,11 +3,15 @@ import Article from './obj/Article'
 var MockDB = require('./db/MockDB');
 
 var db = new MockDB();
-console.log(db.getArticles());
+// console.log(db.getArticles(localStorage.get('username')));
 class ReadQueue extends React.Component {
     constructor() {
         super();
-        this.rq = db.getArticles();
+        this.username = '';
+        if (localStorage.username) {
+            this.username = localStorage.username;
+        }
+        this.rq = db.getArticles(this.username);
     }
 
     render() {

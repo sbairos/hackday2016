@@ -12,10 +12,11 @@ import Article from '../obj/Article'
 // 	}
 
 // }
-var mock;
+var articles;
+var usermap;
 
 function MockDB() {
-	mock = [new Article('name1', 'comment1', 'https://en.wikipedia.org/wiki/Halsey_(singer)'),
+	articles = [new Article('name1', 'comment1', 'https://en.wikipedia.org/wiki/Halsey_(singer)'),
 	new Article('name2', 'comment1', 'https://en.wikipedia.org/wiki/Halsey_(singer)'),
 	new Article('name3', 'comment1', 'https://en.wikipedia.org/wiki/Halsey_(singer)'),
 	new Article('name4', 'comment1', 'https://en.wikipedia.org/wiki/Halsey_(singer)'),
@@ -35,13 +36,15 @@ function MockDB() {
 	new Article('name18', 'comment1', 'https://en.wikipedia.org/wiki/Halsey_(singer)'),
 	new Article('name19', 'comment1', 'https://en.wikipedia.org/wiki/Halsey_(singer)'),
 	];
+	usermap = {'steve': articles, '':[]};
+
 }
 
 MockDB.prototype = new MockDB();
 MockDB.prototype.constructor = MockDB;
 
-MockDB.prototype.getArticles = function() {
-	return mock;
+MockDB.prototype.getArticles = function(username) {
+	return usermap[username];
 };
 
 module.exports = MockDB;
