@@ -7,27 +7,30 @@ var db = new MockDB();
 class ReadQueue extends React.Component {
   constructor() {
     super();
-    this.username = '';
+    var username = '';
     if (localStorage.username) {
       this.username = localStorage.username;
     }
-    this.rq = db.getArticles(this.username);
+    var rq = db.getArticles(this.username);
     this.onRemove = this.onRemove.bind(this);
+    this.state = {username: username, items: rq};
   }
 
   onRemove(event) {
     console.log(event.target);
     var i =0;
-    for (i = 0; i < this.rq.length && event.target.id != this.rq[i].name; i++) {}
+    var items = this.state.items;
+    for (i = 0; i < items.length && event.target.id != items[i].name; i++) {}
 
-    this.rq.splice(i, 1);
+    items.splice(i, 1);
+    this.setState({items: items});
   }
 
   render() {
     var onRemove = this.onRemove
     return (
       <ol>
-        {this.rq.map(function(article){
+        {this.state.items.map(function(article){
           return (
             <li key={article.name}>
               <a href={article.url}>{article.name}</a> - {article.comment}
