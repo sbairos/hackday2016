@@ -12,6 +12,9 @@ class ReadQueue extends React.Component {
       this.username = localStorage.username;
     }
     var rq = db.getArticles(this.username);
+    if (!rq) {
+      rq = [];
+    }
     this.onRemove = this.onRemove.bind(this);
     this.state = {username: username, items: rq};
   }
